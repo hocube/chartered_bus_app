@@ -1,32 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Main from './Main';
+import PostForm from './PostForm';
+import PostFormDTO from './PostFormDTO';
 
 function App() {
-  
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {        
-    fetch('/hello4')            
-    .then((response) => {
-      return response.json();
-    })                     
-    .then(data => {
-      setMessage(data.message);
-  });     
-  },[])
-
   return (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo"/>
-      <h1 className="App-title">{message}</h1>
-    </header>
-    <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>        
-  </div>    
-  )
+      <Routes>
+          <Route path='/main' element={<Main />} />
+          <Route path='/post' element={<PostForm />} />
+          <Route path='/postDTO' element={<PostFormDTO />} />
+          <Route path='/' element={
+            <div className='App'>
+              <header className='App-header'>
+                <h1 className='App-title'>Home Page</h1>
+              </header>
+              <p className='App-intro'>
+                Welcome to the home page.
+              </p>
+            </div>
+        } />
+      </Routes>
+  );
 }
-
 export default App;
