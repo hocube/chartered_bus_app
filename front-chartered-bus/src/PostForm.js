@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function PostForm() {
     const [title, setTitle] = useState('');
@@ -7,14 +7,12 @@ function PostForm() {
     const [writer, setWriter] = useState('');
     const [response, setResponse] = useState(null);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         try {
             const result = await axios.post('http://localhost:8080/post1', {
                 title: "안녕",
                 content: "바보",
-                writer: "",
+                writer: "안녕나는지호다나는할수있따",
             });
             setResponse(result.data);
         } catch (error) {
@@ -24,9 +22,12 @@ function PostForm() {
         }
     };
 
+    useEffect(() => {
+        handleSubmit();
+    }, []);
+
     return (
         <div>
-            <button onClick={handleSubmit}>실행버튼</button>
             {response && (
                 <div>
                     <h2>Response</h2>
