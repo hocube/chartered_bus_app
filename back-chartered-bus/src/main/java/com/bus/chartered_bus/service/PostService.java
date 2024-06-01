@@ -1,4 +1,4 @@
-package com.bus.chartered_bus.Service;
+package com.bus.chartered_bus.service;
 
 import org.springframework.stereotype.Service;
 

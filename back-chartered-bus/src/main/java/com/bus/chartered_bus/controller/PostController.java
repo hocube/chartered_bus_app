@@ -1,7 +1,7 @@
 package com.bus.chartered_bus.controller;
 
 import com.bus.chartered_bus.DTO.PostRequest;
-import com.bus.chartered_bus.Service.PostService;
+import com.bus.chartered_bus.service.PostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
