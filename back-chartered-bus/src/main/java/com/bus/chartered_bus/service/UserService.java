@@ -15,8 +15,18 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    // User 목록 조회
+    // 사용자 목록 조회
     public List<UserVO> findAll() {
         return userRepository.selectAll();
+    }
+
+    // 사용자 등록
+    public String createUser(UserVO userVO){
+        int result = userRepository.createUser(userVO);
+        if(result > 0) {
+            return "성공";
+        } else {
+            return "실패";
+        }
     }
 }

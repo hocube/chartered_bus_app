@@ -39,7 +39,7 @@
 			<artifactId>ojdbc8</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
-		<!-- 버전 호환 체크 -->
+		<!-- spring과 버전 호환 체크 하기-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>

@@ -15,13 +15,21 @@ public class UserRepository {
     private final SqlSessionTemplate sqlSessionTemplate;
 
     public UserRepository(SqlSessionTemplate sqlSessionTemplate) {
+
         this.sqlSessionTemplate = sqlSessionTemplate;
     }
 
-    // User 조회
-    public List<UserVO> selectAll() {
 
+    // 사용자 조회
+    public List<UserVO> selectAll() {
         return sqlSessionTemplate.selectList(NAME_SPACE + "selectAll");
-//        return sqlSessionTemplate.selectList("UserMapper.selectAll");
+//                                                      ||
+//      return sqlSessionTemplate.selectList("UserMapper.selectAll");
+    }
+
+
+    // 사용자 등록
+    public int createUser(UserVO userVO) {
+        return sqlSessionTemplate.insert(NAME_SPACE + "insertUser", userVO);
     }
 }

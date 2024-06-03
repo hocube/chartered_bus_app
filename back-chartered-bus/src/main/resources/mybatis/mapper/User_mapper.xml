@@ -3,7 +3,7 @@
 
 <mapper namespace = "UserMapper">
     <!-- mybatis-config.xml 적용해보기 -->
-    <!-- User 조회 -->
+    <!-- 사용자 조회 결과 맵 -->
     <resultMap type="UserVO" id="RM_USER">
         <result property="keyId" column="KEY_ID"/>
         <result property="userId" column="USER_ID"/>
@@ -16,5 +16,22 @@
     <select id="selectAll" resultMap="RM_USER">
         SELECT * FROM YW_USER
     </select>
+    
+    <!-- 사용자 등록 -->
+    <insert id="insertUser" parameterType="UserVO">
+        INSERT INTO YW_USER(
+            KEY_ID,
+            USER_ID,
+            USER_NM,
+            USER_PW,
+            USER_STS
+        ) VALUES(
+            #{keyId}
+            , #{userId}
+            , #{userName}
+            , #{userPw}
+            , #{userSts}
+        )
+    </insert>
 
 </mapper>

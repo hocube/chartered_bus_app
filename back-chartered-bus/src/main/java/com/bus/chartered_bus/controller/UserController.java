@@ -2,9 +2,10 @@ package com.bus.chartered_bus.controller;
 
 import com.bus.chartered_bus.model.UserVO;
 import com.bus.chartered_bus.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +25,16 @@ public class UserController {
         List<UserVO> result = userService.findAll();
         result.forEach(user-> System.out.println(user));
         return result;
+    }
+
+    // User 입력
+    @PostMapping("/register")
+    public ResponseEntity<String> registerUser(@RequestBody UserVO userVO) {
+        String resultMessage = userService.createUser(userVO);
+        if ("성공".equals(resultMessage)){
+            return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
