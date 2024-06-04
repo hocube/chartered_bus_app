@@ -31,10 +31,21 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserVO userVO) {
         String resultMessage = userService.createUser(userVO);
-        if ("성공".equals(resultMessage)){
+        if ("사용자 등록 성공".equals(resultMessage)){
             return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable String userId) {
+        String resultMessage = userService.deleteUser(userId);
+        if("사용자 삭제 성공".equals(resultMessage)){
+            return new ResponseEntity<>(resultMessage, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+
         }
     }
 }

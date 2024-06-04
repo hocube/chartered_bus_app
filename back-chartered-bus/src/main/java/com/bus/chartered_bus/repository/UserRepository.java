@@ -27,9 +27,13 @@ public class UserRepository {
 //      return sqlSessionTemplate.selectList("UserMapper.selectAll");
     }
 
-
     // 사용자 등록
     public int createUser(UserVO userVO) {
         return sqlSessionTemplate.insert(NAME_SPACE + "insertUser", userVO);
+    }
+
+    // 사용자 삭제
+    public int deleteUser(String userId) {
+        return sqlSessionTemplate.delete(NAME_SPACE + "deleteUser", userId);
     }
 }

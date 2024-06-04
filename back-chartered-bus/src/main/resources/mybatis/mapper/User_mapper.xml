@@ -34,4 +34,9 @@
         )
     </insert>
 
+    <!-- 사용자 삭제-->
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM YW_USER WHERE USER_ID = #{userId}
+    </delete>
+
 </mapper>

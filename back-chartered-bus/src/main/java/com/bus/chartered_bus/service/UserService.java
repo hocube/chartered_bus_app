@@ -24,9 +24,19 @@ public class UserService {
     public String createUser(UserVO userVO){
         int result = userRepository.createUser(userVO);
         if(result > 0) {
-            return "성공";
+            return "사용자 등록 성공";
         } else {
-            return "실패";
+            return "사용자 등록 실패";
+        }
+    }
+
+    // 사용자 삭제
+    public String deleteUser(String userId) {
+        int result = userRepository.deleteUser(userId);
+        if(result > 0) {
+            return "사용자 삭제 성공";
+        } else {
+            return "사용자 삭제 실패";
         }
     }
 }
