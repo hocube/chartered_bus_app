@@ -5,16 +5,12 @@
     <!-- mybatis-config.xml 적용해보기 -->
     <!-- 사용자 조회 결과 맵 -->
     <resultMap type="UserVO" id="RM_USER">
-        <result property="keyId" column="KEY_ID"/>
-        <result property="userId" column="USER_ID"/>
-        <result property="userName" column="USER_NM"/>
-        <result property="userPw" column="USER_PW"/>
-        <result property="userSts" column="USER_STS"/>
+        <result property="Email" column="EMAIL"/>
     </resultMap>
 
     <!-- 사용자 목록 전체조회 -->
     <select id="selectAll" resultMap="RM_USER">
-        SELECT * FROM YW_USER
+        SELECT EMAIL FROM Quotation_inquiry
     </select>
     
     <!-- 사용자 등록 -->
