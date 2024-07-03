@@ -5,14 +5,15 @@
     <!-- mybatis-config.xml 적용해보기 -->
     <!-- 사용자 조회 결과 맵 -->
     <resultMap type="UserVO" id="RM_USER">
+        <result property="Name" column="APPLICANT_NAME"/>
         <result property="Email" column="EMAIL"/>
     </resultMap>
 
     <!-- 사용자 목록 전체조회 -->
     <select id="selectAll" resultMap="RM_USER">
-        SELECT EMAIL FROM Quotation_inquiry
+        SELECT EMAIL,APPLICANT_NAME FROM Quotation_inquiry
     </select>
-    
+
     <!-- 사용자 등록 -->
     <insert id="insertUser" parameterType="UserVO">
         INSERT INTO YW_USER(

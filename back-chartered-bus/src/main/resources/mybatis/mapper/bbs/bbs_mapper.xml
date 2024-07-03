@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "bbsMapper">
+    <!-- 사용자 조회 결과 맵 -->
+    <resultMap type="BBSVO" id="BBS_LIST">
+        <result property="quoteNumber" column="QUOTE_NUMBER" />
+        <result property="applicantName" column="APPLICANT_NAME" />
+        <result property="phoneNum" column="PHONE_NUM" />
+        <result property="email" column="EMAIL" />
+        <result property="drivingMethod" column="DRIVING_METHOD" />
+        <result property="desiredVehicle" column="DESIRED_VEHICLE" />
+        <result property="numberPeople" column="NUMBER_PEOPLE" />
+        <result property="numberVehicle" column="NUMBER_VEHICLE" />
+        <result property="departureDateTime" column="DEPARTURE_DATE_TIME" />
+        <result property="arrivalDateTime" column="ARRIVAL_DATE_TIME" />
+        <result property="departureCity" column="DEPARTURE_CITY" />
+        <result property="departureDetail" column="DEPARTURE_DETAIL" />
+        <result property="arrivalCity" column="ARRIVAL_CITY" />
+        <result property="arrivalDetail" column="ARRIVAL_DETAIL" />
+        <result property="remark" column="REMARK" />
+        <result property="taxInvoice" column="TAX_INVOICE" />
+        <result property="parkingFee" column="PARKING_FEE" />
+        <result property="tollFee" column="TOLL_FEE" />
+        <result property="howCheckQuotation" column="HOW_CHECK_QUOTATION" />
+        <result property="password" column="PASSWORD" />
+        <result property="currentStatus" column="CURRENT_STATUS" />
+        <result property="createdAt" column="CREATED_AT" />
+    </resultMap>
+
+    <!-- 견적문의 게시글 조회 -->
+    <select id="selectAll" resultMap="BBS_LIST">
+        SELECT * FROM QUOTATION_INQUIRY;
+    </select>
+
+    <!-- 견적문의 게시글 입력 -->
+    <insert id="insertQuotation" parameterType="BBSVO">
+        INSERT INTO QUOTATION_INQUIRY(
+            APPLICANT_NAME,
+            PHONE_NUM,
+            EMAIL,
+            DRIVING_METHOD,
+            DESIRED_VEHICLE,
+            NUMBER_PEOPLE,
+            NUMBER_VEHICLE,
+            DEPARTURE_DATE_TIME,
+            ARRIVAL_DATE_TIME,
+            DEPARTURE_CITY,
+            DEPARTURE_DETAIL,
+            ARRIVAL_CITY,
+            ARRIVAL_DETAIL,
+            REMARK,
+            TAX_INVOICE,
+            PARKING_FEE,
+            TOLL_FEE,
+            HOW_CHECK_QUOTATION,
+            PASSWORD
+        ) VALUES (
+            #{applicantName},
+            #{phoneNum},
+            #{email},
+            #{drivingMethod},
+            #{desiredVehicle},
+            #{numberPeople},
+            #{numberVehicle},
+            #{departureDateTime},
+            #{arrivalDateTime},
+            #{departureCity},
+            #{departureDetail},
+            #{arrivalCity},
+            #{arrivalDetail},
+            #{remark},
+            #{taxInvoice},
+            #{parkingFee},
+            #{tollFee},
+            #{howCheckQuotation},
+            #{password}
+        )
+    </insert>
+
+</mapper>

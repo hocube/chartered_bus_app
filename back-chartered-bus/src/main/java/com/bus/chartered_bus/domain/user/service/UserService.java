@@ -1,7 +1,8 @@
-package com.bus.chartered_bus.service;
+package com.bus.chartered_bus.domain.user.service;
 
-import com.bus.chartered_bus.model.UserVO;
-import com.bus.chartered_bus.repository.UserRepository;
+
+import com.bus.chartered_bus.domain.user.model.UserVO;
+import com.bus.chartered_bus.domain.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,10 @@ public class UserService {
 
     // 사용자 목록 조회
     public List<UserVO> findAll() {
-        return userRepository.selectAll();
+        List<UserVO> userList = userRepository.selectAll();
+        // 콘솔에 출력
+        userList.forEach(user -> System.out.println("Service - Email: " + user.getEmail() + ", Name: " + user.getName()));
+        return userList;
     }
 
     // 사용자 등록

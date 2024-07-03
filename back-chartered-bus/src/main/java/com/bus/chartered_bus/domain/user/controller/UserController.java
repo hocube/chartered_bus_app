@@ -1,7 +1,8 @@
-package com.bus.chartered_bus.controller;
+package com.bus.chartered_bus.domain.user.controller;
 
-import com.bus.chartered_bus.model.UserVO;
-import com.bus.chartered_bus.service.UserService;
+
+import com.bus.chartered_bus.domain.user.model.UserVO;
+import com.bus.chartered_bus.domain.user.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class UserController {
     @GetMapping
     public List<UserVO> selectAll(){
         List<UserVO> result = userService.findAll();
-        result.forEach(user-> System.out.println(user));
+        result.forEach(user-> System.out.println("Controller - Email: " + user.getEmail() + ", Name: " + user.getName()));
         return result;
     }
 
