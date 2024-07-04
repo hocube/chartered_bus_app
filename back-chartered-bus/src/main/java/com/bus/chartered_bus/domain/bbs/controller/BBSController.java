@@ -30,7 +30,7 @@ public class BBSController {
     @PostMapping("/quotation")
     public ResponseEntity<String> insertQuotation(@RequestBody BBSVO bbsvo) {
         String resultMessage = bbsService.createQuotation(bbsvo);
-        if("등록 성공".equals(resultMessage)){
+        if ("등록 성공".equals(resultMessage)) {
             return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -42,6 +42,17 @@ public class BBSController {
     public ResponseEntity<String> deleteQuotation(@PathVariable Integer quoteNumber) {
         String resultMessage = bbsService.deleteQuotation(quoteNumber);
         if ("삭제 성공".equals(resultMessage)) {
+            return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 견적문의 게시글 수정
+    @PatchMapping("/update/{quoteNumber}")
+    public ResponseEntity<String> updateQuotation(@PathVariable Integer quoteNumber, @RequestBody BBSVO bbsvo) {
+        String resultMessage = bbsService.updateQuotation(quoteNumber, bbsvo);
+        if ("수정 성공".equals(resultMessage)) {
             return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);

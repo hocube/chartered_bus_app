@@ -97,4 +97,29 @@
         AND IS_DELETED = 0
     </update>
 
+    <!-- 견적문의 게시글 수정 -->
+    <update id="updateQuotation" parameterType="BBSVO">
+        UPDATE QUOTATION_INQUIRY
+        SET
+            PHONE_NUM = #{phoneNum},
+            EMAIL = #{email},
+            DRIVING_METHOD = #{drivingMethod},
+            DESIRED_VEHICLE = #{desiredVehicle},
+            NUMBER_PEOPLE = #{numberPeople},
+            NUMBER_VEHICLE = #{numberVehicle},
+            DEPARTURE_DATE_TIME = #{departureDateTime},
+            ARRIVAL_DATE_TIME = #{arrivalDateTime},
+            DEPARTURE_CITY = #{departureCity},
+            DEPARTURE_DETAIL = #{departureDetail},
+            ARRIVAL_CITY = #{arrivalCity},
+            ARRIVAL_DETAIL = #{arrivalDetail},
+            REMARK = #{remark},
+            TAX_INVOICE = #{taxInvoice},
+            PARKING_FEE = #{parkingFee},
+            TOLL_FEE  = #{tollFee}
+        WHERE
+            QUOTE_NUMBER = #{quoteNumber}
+            AND IS_DELETED = 0
+    </update>
+
 </mapper>

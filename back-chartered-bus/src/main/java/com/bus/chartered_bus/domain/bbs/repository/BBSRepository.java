@@ -41,4 +41,9 @@ public class BBSRepository {
     public int deleteQuotation(Integer quoteNumber){
         return sqlSessionTemplate.update(NAME_SPACE + "updateIsDeleted", quoteNumber);
     }
+
+    // 견적문의 게시글 수정
+    public int updateQuotation(Integer quoteNumber, BBSVO bbsvo) {
+        return sqlSessionTemplate.update(NAME_SPACE + "updateQuotation", bbsvo);
+    }
 }

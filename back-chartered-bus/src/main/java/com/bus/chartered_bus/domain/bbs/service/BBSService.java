@@ -48,4 +48,22 @@ public class BBSService {
             return "이미 삭제된 견적서 입니다.";
         }
     }
+
+    // 견적문의 게시글 수정
+    public String updateQuotation(Integer quoteNumber, BBSVO bbsvo){
+        // 게시물 존재 여부 확인
+        boolean exists = bbsRepository.existsByQuoteNumber(quoteNumber);
+        if(!exists) {
+            return "해당 견적서를 찾을 수 없습니다";
+        }
+
+        // 수정
+        bbsvo.setQuoteNumber(quoteNumber); // URL 경로 변수로 받은 quoteNumber 값을 세팅.
+        int result = bbsRepository.updateQuotation(quoteNumber, bbsvo);
+        if(result > 0){
+            return "수정 성공";
+        }else {
+            return "이미 삭제된 견적서 입니다. 수정 불가합니다.";
+        }
+    }
 }
