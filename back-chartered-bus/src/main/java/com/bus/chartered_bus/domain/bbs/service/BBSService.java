@@ -34,6 +34,13 @@ public class BBSService {
 
     // 견적문의 게시글 삭제
     public String deleteQuotation(Integer quoteNumber){
+        // 게시물 존재 여부 확인
+        boolean exists = bbsRepository.existsByQuoteNumber(quoteNumber);
+        if(!exists) {
+            return "해당 견적서를 찾을 수 없습니다";
+        }
+
+        // IS_DELETED 1로 UPDATE
         int result = bbsRepository.deleteQuotation(quoteNumber);
         if(result > 0) {
             return "삭제 성공";

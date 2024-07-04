@@ -31,7 +31,7 @@
 
     <!-- 견적문의 게시글 조회 -->
     <select id="selectAll" resultMap="BBS_LIST">
-        SELECT * FROM QUOTATION_INQUIRY;
+        SELECT * FROM QUOTATION_INQUIRY WHERE IS_DELETED = 0;
     </select>
 
     <!-- 견적문의 게시글 입력 -->
@@ -80,6 +80,16 @@
     </insert>
 
     <!-- 견적문의 게시글 삭제 -->
+    <!-- 게시물 존재 여부 확인 -->
+    <select id="existsByQuoteNumber" parameterType="int" resultType="boolean">
+        SELECT EXISTS (
+            SELECT 1
+            FROM QUOTATION_INQUIRY
+            WHERE QUOTE_NUMBER = #{quoteNumber}
+        )
+    </select>
+
+    <!-- IS_DELETED 1로 UPDATE -->
     <update id="updateIsDeleted" parameterType="int">
         UPDATE QUOTATION_INQUIRY
         SET IS_DELETED = 1
