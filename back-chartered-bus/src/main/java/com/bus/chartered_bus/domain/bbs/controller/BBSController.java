@@ -36,4 +36,15 @@ public class BBSController {
             return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    // 견적문의 게시글 삭제
+    @DeleteMapping("/delete/{quoteNumber}")
+    public ResponseEntity<String> deleteQuotation(@PathVariable Integer quoteNumber) {
+        String resultMessage = bbsService.deleteQuotation(quoteNumber);
+        if ("삭제 성공".equals(resultMessage)) {
+            return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

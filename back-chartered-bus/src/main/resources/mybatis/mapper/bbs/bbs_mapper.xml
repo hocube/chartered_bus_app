@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "bbsMapper">
+
     <!-- 사용자 조회 결과 맵 -->
     <resultMap type="BBSVO" id="BBS_LIST">
         <result property="quoteNumber" column="QUOTE_NUMBER" />
@@ -77,5 +78,13 @@
             #{password}
         )
     </insert>
+
+    <!-- 견적문의 게시글 삭제 -->
+    <update id="updateIsDeleted" parameterType="int">
+        UPDATE QUOTATION_INQUIRY
+        SET IS_DELETED = 1
+        WHERE QUOTE_NUMBER = #{quoteNumber}
+        AND IS_DELETED = 0
+    </update>
 
 </mapper>

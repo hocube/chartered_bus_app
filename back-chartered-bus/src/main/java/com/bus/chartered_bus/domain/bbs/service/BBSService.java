@@ -22,12 +22,23 @@ public class BBSService {
         return bbsList;
     }
 
+    // 견적문의 게시글 입력
     public String createQuotation(BBSVO bbsvo){
         int result = bbsRepository.createQuotation(bbsvo);
         if (result > 0){
             return "등록 성공";
         } else {
             return "등록 실패";
+        }
+    }
+
+    // 견적문의 게시글 삭제
+    public String deleteQuotation(Integer quoteNumber){
+        int result = bbsRepository.deleteQuotation(quoteNumber);
+        if(result > 0) {
+            return "삭제 성공";
+        }else {
+            return "이미 삭제된 견적서 입니다.";
         }
     }
 }

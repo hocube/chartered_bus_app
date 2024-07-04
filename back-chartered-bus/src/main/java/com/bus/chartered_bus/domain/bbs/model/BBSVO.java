@@ -50,6 +50,7 @@ public class BBSVO {
     private String tollFee;
     private String howCheckQuotation;
     private String password;
+    private Boolean isDeleted;                 // 삭제 여부   0: not deleted, 1: deleted
     private String currentStatus = "상담중";    // 기본값 설정
     private LocalDateTime createdAt;           // 데이터베이스에서 자동 설정
 

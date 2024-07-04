@@ -29,4 +29,8 @@ public class BBSRepository {
     public int createQuotation(BBSVO bbsvo){
         return sqlSessionTemplate.insert(NAME_SPACE + "insertQuotation", bbsvo);
     }
+
+    public int deleteQuotation(Integer quoteNumber){
+        return sqlSessionTemplate.update(NAME_SPACE + "updateIsDeleted", quoteNumber);
+    }
 }
