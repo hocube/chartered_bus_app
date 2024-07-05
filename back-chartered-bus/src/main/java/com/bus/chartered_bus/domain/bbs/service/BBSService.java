@@ -1,5 +1,6 @@
 package com.bus.chartered_bus.domain.bbs.service;
 
+import com.bus.chartered_bus.common.model.ExceptionCode;
 import com.bus.chartered_bus.domain.bbs.model.BBSVO;
 import com.bus.chartered_bus.domain.bbs.repository.BBSRepository;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class BBSService {
         // 게시물 존재 여부 확인
         boolean exists = bbsRepository.existsByQuoteNumber(quoteNumber);
         if(!exists) {
-            throw new IllegalArgumentException("해당 견적서를 찾을 수 없습니다: " + quoteNumber);
+            throw new IllegalArgumentException(ExceptionCode.NOT_FOUND.getMessage() + ": " + quoteNumber);
         }
 
         // IS_DELETED 1로 UPDATE
@@ -45,7 +46,7 @@ public class BBSService {
         if(result > 0) {
             return "삭제 성공";
         }else {
-            throw new IllegalArgumentException("이미 삭제된 견적서 입니다: " + quoteNumber);
+            throw new IllegalArgumentException(ExceptionCode.ALREADY_DELETED.getMessage() + ": " + quoteNumber);
         }
     }
 

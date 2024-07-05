@@ -16,7 +16,8 @@ public enum ExceptionCode {
     PAYLOAD_TOO_LARGE("PAYLOAD_TOO_LARGE", "요청 페이로드가 너무 큽니다."),
     UNSUPPORTED_MEDIA_TYPE("UNSUPPORTED_MEDIA_TYPE", "지원하지 않는 미디어 타입입니다."),
     TOO_MANY_REQUESTS("TOO_MANY_REQUESTS", "너무 많은 요청이 발생했습니다."),
-    SERVER_ERROR("SERVER_ERROR", "서버 오류가 발생했습니다.");
+    SERVER_ERROR("SERVER_ERROR", "서버 오류가 발생했습니다."),
+    ALREADY_DELETED("ALREADY_DELETED", "이미 삭제된 견적서 입니다.");
 
     private final String code;
     private final String message;

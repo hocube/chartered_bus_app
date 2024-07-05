@@ -8,4 +8,5 @@ import lombok.Data;
 public class CommonResponseVO {
     private String code;
     private String message;
+    private String path;
 }
