@@ -37,7 +37,7 @@ public class BBSService {
         // 게시물 존재 여부 확인
         boolean exists = bbsRepository.existsByQuoteNumber(quoteNumber);
         if(!exists) {
-            return "해당 견적서를 찾을 수 없습니다";
+            throw new IllegalArgumentException("해당 견적서를 찾을 수 없습니다: " + quoteNumber);
         }
 
         // IS_DELETED 1로 UPDATE
@@ -45,7 +45,7 @@ public class BBSService {
         if(result > 0) {
             return "삭제 성공";
         }else {
-            return "이미 삭제된 견적서 입니다.";
+            throw new IllegalArgumentException("이미 삭제된 견적서 입니다: " + quoteNumber);
         }
     }
 
@@ -54,7 +54,7 @@ public class BBSService {
         // 게시물 존재 여부 확인
         boolean exists = bbsRepository.existsByQuoteNumber(quoteNumber);
         if(!exists) {
-            return "해당 견적서를 찾을 수 없습니다";
+            throw new IllegalArgumentException("해당 견석서를 찾을 수 없습니다: " + quoteNumber);
         }
 
         // 수정

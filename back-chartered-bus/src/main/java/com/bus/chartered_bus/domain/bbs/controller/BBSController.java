@@ -40,12 +40,8 @@ public class BBSController {
     // 견적문의 게시글 삭제
     @DeleteMapping("/delete/{quoteNumber}")
     public ResponseEntity<String> deleteQuotation(@PathVariable Integer quoteNumber) {
-        String resultMessage = bbsService.deleteQuotation(quoteNumber);
-        if ("삭제 성공".equals(resultMessage)) {
-            return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        bbsService.deleteQuotation(quoteNumber);
+        return new ResponseEntity<>("삭제 성공", HttpStatus.CREATED);
     }
 
     // 견적문의 게시글 수정
