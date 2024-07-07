@@ -54,4 +54,15 @@ public class BBSController {
             return new ResponseEntity<>(resultMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    @PostMapping("/login")
+//    public String loginUser(@RequestBody UserVO userVO) {
+//        // 여기서 사용자 정보를 데이터베이스에서 조회하는 로직을 추가해야 합니다
+//        String storedPasswordHash = /* 데이터베이스에서 조회한 암호화된 비밀번호 */;
+//        if (userService.checkPassword(userVO.getPassword(), storedPasswordHash)) {
+//            return "Login successful";
+//        } else {
+//            return "Invalid credentials";
+//        }
+//    }
 }
